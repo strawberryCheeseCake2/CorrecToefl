@@ -11,6 +11,7 @@ enum ImageName: String {
 	case backIcon = "arrow.left"
 	case checkIcon = "checkmark.circle.fill"
 	case crossIcon = "xmark.circle.fill"
+	case docViewFinder = "doc.viewfinder.fill"
 }
 
 enum InputViewGravity {

@@ -21,6 +21,7 @@
 		93281F4229AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F4129AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift */; };
 		93281F4429AF00E200F2B5B1 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F4329AF00E200F2B5B1 /* TableViewHeaderView.swift */; };
 		93281F4629AF434200F2B5B1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F4529AF434200F2B5B1 /* CameraViewController.swift */; };
+		93281F4829AF46A800F2B5B1 /* CarmeraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F4729AF46A800F2B5B1 /* CarmeraButton.swift */; };
 		93B615E729AA4D4C00CD4E72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B615E629AA4D4C00CD4E72 /* AppDelegate.swift */; };
 		93B615E929AA4D4C00CD4E72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B615E829AA4D4C00CD4E72 /* SceneDelegate.swift */; };
 		93B615EB29AA4D4C00CD4E72 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B615EA29AA4D4C00CD4E72 /* HomeViewController.swift */; };
@@ -57,6 +58,7 @@
 		93281F4129AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackInputTableViewHeaderView.swift; sourceTree = "<group>"; };
 		93281F4329AF00E200F2B5B1 /* TableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderView.swift; sourceTree = "<group>"; };
 		93281F4529AF434200F2B5B1 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		93281F4729AF46A800F2B5B1 /* CarmeraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarmeraButton.swift; sourceTree = "<group>"; };
 		93B615E329AA4D4C00CD4E72 /* CorrecToefl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorrecToefl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B615E629AA4D4C00CD4E72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B615E829AA4D4C00CD4E72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				93D7D21B29ADA98D00D3813E /* DefaultTextLabel.swift */,
 				93281F4129AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift */,
 				93281F4329AF00E200F2B5B1 /* TableViewHeaderView.swift */,
+				93281F4729AF46A800F2B5B1 /* CarmeraButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				93D7D21829ADA90300D3813E /* HeaderLabel.swift in Sources */,
 				93FAE80629ADE7A60056225F /* PromptManager.swift in Sources */,
 				93281F4629AF434200F2B5B1 /* CameraViewController.swift in Sources */,
+				93281F4829AF46A800F2B5B1 /* CarmeraButton.swift in Sources */,
 				93B6160029AA5C1900CD4E72 /* Color+Extensions.swift in Sources */,
 				93281F4229AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift in Sources */,
 				93157F4029AB54D7008F71F1 /* InputTextView.swift in Sources */,
