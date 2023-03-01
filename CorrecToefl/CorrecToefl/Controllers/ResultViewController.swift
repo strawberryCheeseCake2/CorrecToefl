@@ -14,23 +14,13 @@ class ResultViewController: UIViewController {
 	var question: String
 	var answer: String
 	
+	var isLoading: Bool = true
+	
 	lazy var backButton = UIBarButtonItem(image: UIImage(systemName: ImageName.backIcon.rawValue), style: .plain, target: self, action: #selector(backButtonPressd))
 	
-	let feedbackTableView = UITableView()
+	let feedbackTableView = UITableView(frame: .zero, style: .grouped)
 	let scrollView = UIScrollView()
 	let topLevelStackView = StackView(axis: .vertical, distribution: .equalSpacing, spacing: 24, alignment: .leading)
-	
-	let seperateView: UIView = {
-		let view = UIView()
-		view.backgroundColor = .separator
-		return view
-	}()
-	
-	lazy var questionButton = InputViewButton(text: question, action: inputViewButtonPressed)
-	lazy var answerLabelButton = InputViewButton(text: answer, action: inputViewButtonPressed)
-	
-	let feedbackHeader = HeaderLabel(text: "피드백")
-	let feedbackStackView = StackView(axis: .vertical, spacing: 16)
 	
 	let promptManger = PromptManger()
 	
@@ -48,64 +38,49 @@ class ResultViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		configureVC()
+		configureTableView()
 		addSubviews()
 		setupLayout()
-		generateSkeletons(howMany: SkeletonNumbers.feedback.rawValue)
+		
 //		loadFeedback()
 	}
 	
+	// MARK: Updating Data
+	
 	private func loadFeedback() {
+		isLoading = true
 		promptManger.getFeedback(question: question, answer: answer) { [weak self] result in
-
+			
 			guard self != nil,
-			      let safePromptManger = self?.promptManger,
-			      let feedbackSkeletons = self?.feedbackStackView.arrangedSubviews
-			else { return }
+				  let safePromptManger = self?.promptManger else { return }
 			
 			self?.feedbacks = safePromptManger.parsePrompt(result)
 			print(self!.feedbacks)
 			
 			self?.updateFeedbackView()
-//			self?.scrollToBottom()
 		}
 	}
-  
-	private func updateFeedbackView() {
-		let dataCount = feedbacks.count
-		let skeletonCount = SkeletonNumbers.feedback.rawValue
-		let extraNumber = skeletonCount - dataCount
-		
-		guard let feedbackViews = feedbackStackView.arrangedSubviews as? [FeedbackListItemView] else { return }
-		
-		// Adjust count of feedback views
-		if skeletonCount > dataCount {
-			// Hide unnecessary feedback views
-			for index in 0 ..< extraNumber {
-				feedbackViews[dataCount + index].isHidden = true
-			}
-		} else {
-			// Add needed feedback views
-			generateSkeletons(howMany: extraNumber)
-		}
-		print("update")
-		// Update feedback view data & Hide skeletons
-		DispatchQueue.main.async {
-			for feedbackIndex in 0 ..< dataCount {
-				print(self.feedbacks[feedbackIndex].feedbackString)
-				let feedbackView = feedbackViews[feedbackIndex]
-				feedbackViews[feedbackIndex].feedbackLabel.text = self.feedbacks[feedbackIndex].feedbackString
-				feedbackViews[feedbackIndex].icon.hideSkeleton()
-				feedbackViews[feedbackIndex].feedbackLabel.hideSkeleton()
-			}
-		}
 	
+	private func updateFeedbackView() {
+		isLoading = false
+		
+		DispatchQueue.main.async {
+			self.feedbackTableView.reloadData()
+		}
+		
+		self.scrollToBottom()
 		
 	}
 	
 	private func scrollToBottom() {
-		let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.adjustedContentInset.bottom)
-		scrollView.setContentOffset(bottomOffset, animated: true)
+		let feedbackCount = feedbacks.count
+		if feedbackCount > 0 {
+			let indexPath = IndexPath(row: feedbackCount - 1, section: 1)
+			feedbackTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+		}
 	}
+	
+	
 }
 
 // MARK: Button Action Methods
@@ -132,45 +107,13 @@ extension ResultViewController {
 	}
 	
 	private func addSubviews() {
-		view.addSubview(scrollView)
-		scrollView.addSubview(topLevelStackView)
-		topLevelStackView.addArrangedSubview(questionButton)
-		topLevelStackView.addArrangedSubview(seperateView)
-		topLevelStackView.addArrangedSubview(answerLabelButton)
-		topLevelStackView.addArrangedSubview(feedbackHeader)
-		topLevelStackView.addArrangedSubview(feedbackStackView)
+		view.addSubview(feedbackTableView)
 	}
 	
 	private func setupLayout() {
-		scrollView.snp.makeConstraints { make in
+		feedbackTableView.snp.makeConstraints { make in
 			make.top.equalTo(view.safeAreaLayoutGuide)
-			make.width.equalToSuperview()
 			make.bottom.equalToSuperview()
-		}
-		
-		scrollView.contentLayoutGuide.snp.makeConstraints { make in
-			make.top.equalToSuperview()
-			make.left.equalToSuperview()
-			make.right.equalToSuperview()
-		}
-		
-		topLevelStackView.snp.makeConstraints { make in
-			make.top.equalToSuperview().offset(16)
-			make.left.equalToSuperview().offset(16)
-			make.right.equalToSuperview().offset(-16)
-			make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom)
-		}
-		
-		seperateView.snp.makeConstraints { make in
-			make.height.equalTo(Size.seperatorSize.rawValue)
-			make.width.equalToSuperview()
-		}
-		
-		questionButton.snp.makeConstraints { make in
-			make.width.equalToSuperview()
-		}
-		
-		feedbackStackView.snp.makeConstraints { make in
 			make.width.equalToSuperview()
 		}
 	}
@@ -179,12 +122,82 @@ extension ResultViewController {
 // MARK: Skeleton
 
 extension ResultViewController {
-	private func generateSkeletons(howMany count: Int) {
-		for _ in 0 ..< count {
-			let skeletonFeedback = FeedbackListItemView(type: .check, feedback: "TheDefaultTextForSkeletonViewTheDefaultTextForSkeletonViewTheDefaultTextForSkeletonView")
-			feedbackStackView.addArrangedSubview(skeletonFeedback)
-		}
+	private func hideSkeletons() {}
+}
+
+// MARK: TableView Configurations
+
+extension ResultViewController: SkeletonTableViewDelegate, SkeletonTableViewDataSource {
+	func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+		return FeedbackTableViewCell.id
 	}
 	
-	private func hideSkeletons() {}
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if section == 0 {
+			return 0
+		} else if section == 1 {
+			if isLoading {
+				return SkeletonNumbers.feedback.rawValue
+			} else {
+				return feedbacks.count
+			}
+		}
+		
+		return 0
+		
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: FeedbackTableViewCell.id, for: indexPath) as! FeedbackTableViewCell
+		cell.selectionStyle = .none
+		
+		if !isLoading {
+			cell.icon.hideSkeleton()
+			cell.feedbackLabel.hideSkeleton()
+			let feedback = self.feedbacks[indexPath.row]
+			print(feedback)
+			cell.configureContents(feedback: feedback)
+		}
+		
+		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		return UITableView.automaticDimension
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		var header: UITableViewHeaderFooterView
+		
+		switch section {
+		case 0:
+			header = tableView.dequeueReusableHeaderFooterView(withIdentifier: FeedbackInputTableViewHeaderView.id) as! FeedbackInputTableViewHeaderView
+			(header as! FeedbackInputTableViewHeaderView).question = question
+			(header as! FeedbackInputTableViewHeaderView).answer = answer
+			(header as! FeedbackInputTableViewHeaderView).action = inputViewButtonPressed
+		default:
+			header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableViewHeaderView.id) as! TableViewHeaderView
+			(header as! TableViewHeaderView).header.text = "피드백"
+		}
+		
+		return header
+	}
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 2
+	}
+	
+	func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+		return UITableView.automaticDimension
+	}
+	
+	private func configureTableView() {
+		feedbackTableView.backgroundColor = .background
+		feedbackTableView.separatorStyle = .none
+		feedbackTableView.dataSource = self
+		feedbackTableView.delegate = self
+		feedbackTableView.register(FeedbackTableViewCell.self, forCellReuseIdentifier: FeedbackTableViewCell.id)
+		feedbackTableView.register(FeedbackInputTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: FeedbackInputTableViewHeaderView.id)
+		feedbackTableView.register(TableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: TableViewHeaderView.id)
+	}
 }

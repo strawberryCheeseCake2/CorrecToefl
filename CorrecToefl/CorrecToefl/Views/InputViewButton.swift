@@ -14,7 +14,11 @@ class InputViewButton: UIButton {
 	var placeholderText: String
 	var action: (() -> Void)?
 	
-	var text: String
+	var text: String {
+		didSet {
+			textLabel.text = text
+		}
+	}
 	
 	lazy var placeholderLabel: PlaceholderLabel = {
 		let label = PlaceholderLabel()
@@ -58,8 +62,11 @@ class InputViewButton: UIButton {
 		
 		if placeholderText != "" {
 			self.addBottomBorder(with: .separator, andWidth: 0.2)
+		} else {
+			placeholderLabel.isHidden = true
 		}
 		
+
 		addSubview(textLabel)
 	}
 	

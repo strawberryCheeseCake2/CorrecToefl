@@ -17,6 +17,10 @@
 		93157F4229AB5947008F71F1 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93157F4129AB5947008F71F1 /* StackView.swift */; };
 		93157F4429AB6DBE008F71F1 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93157F4329AB6DBE008F71F1 /* RoundedButton.swift */; };
 		93157F4629AB7A49008F71F1 /* TextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93157F4529AB7A49008F71F1 /* TextView+Extensions.swift */; };
+		93281F4029AEE7A500F2B5B1 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F3F29AEE7A500F2B5B1 /* APIKeys.swift */; };
+		93281F4229AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F4129AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift */; };
+		93281F4429AF00E200F2B5B1 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F4329AF00E200F2B5B1 /* TableViewHeaderView.swift */; };
+		93281F4629AF434200F2B5B1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F4529AF434200F2B5B1 /* CameraViewController.swift */; };
 		93B615E729AA4D4C00CD4E72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B615E629AA4D4C00CD4E72 /* AppDelegate.swift */; };
 		93B615E929AA4D4C00CD4E72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B615E829AA4D4C00CD4E72 /* SceneDelegate.swift */; };
 		93B615EB29AA4D4C00CD4E72 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B615EA29AA4D4C00CD4E72 /* HomeViewController.swift */; };
@@ -28,12 +32,11 @@
 		93D7D20D29ABB53800D3813E /* PlaceholderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D20C29ABB53800D3813E /* PlaceholderLabel.swift */; };
 		93D7D20F29ACE0D200D3813E /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D20E29ACE0D200D3813E /* ResultView.swift */; };
 		93D7D21829ADA90300D3813E /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D21729ADA90300D3813E /* HeaderLabel.swift */; };
-		93D7D21A29ADA93100D3813E /* FeedbackListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D21929ADA93100D3813E /* FeedbackListItemView.swift */; };
+		93D7D21A29ADA93100D3813E /* FeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D21929ADA93100D3813E /* FeedbackTableViewCell.swift */; };
 		93D7D21C29ADA98D00D3813E /* DefaultTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D21B29ADA98D00D3813E /* DefaultTextLabel.swift */; };
 		93FAE80229ADD9680056225F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80129ADD9680056225F /* ResultViewController.swift */; };
 		93FAE80429ADE4DA0056225F /* Prompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80329ADE4DA0056225F /* Prompt.swift */; };
 		93FAE80629ADE7A60056225F /* PromptManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80529ADE7A60056225F /* PromptManager.swift */; };
-		93FAE80829AE15F70056225F /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80729AE15F70056225F /* APIKeys.swift */; };
 		93FAE80A29AE169B0056225F /* CompletionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80929AE169B0056225F /* CompletionData.swift */; };
 		93FAE80D29AE16C00056225F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 93FAE80C29AE16C00056225F /* Alamofire */; };
 		93FAE80F29AE1B980056225F /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80E29AE1B980056225F /* Feedback.swift */; };
@@ -50,6 +53,10 @@
 		93157F4129AB5947008F71F1 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		93157F4329AB6DBE008F71F1 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		93157F4529AB7A49008F71F1 /* TextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextView+Extensions.swift"; sourceTree = "<group>"; };
+		93281F3F29AEE7A500F2B5B1 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		93281F4129AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackInputTableViewHeaderView.swift; sourceTree = "<group>"; };
+		93281F4329AF00E200F2B5B1 /* TableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderView.swift; sourceTree = "<group>"; };
+		93281F4529AF434200F2B5B1 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		93B615E329AA4D4C00CD4E72 /* CorrecToefl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorrecToefl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B615E629AA4D4C00CD4E72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B615E829AA4D4C00CD4E72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,12 +70,11 @@
 		93D7D20C29ABB53800D3813E /* PlaceholderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderLabel.swift; sourceTree = "<group>"; };
 		93D7D20E29ACE0D200D3813E /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		93D7D21729ADA90300D3813E /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
-		93D7D21929ADA93100D3813E /* FeedbackListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackListItemView.swift; sourceTree = "<group>"; };
+		93D7D21929ADA93100D3813E /* FeedbackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewCell.swift; sourceTree = "<group>"; };
 		93D7D21B29ADA98D00D3813E /* DefaultTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextLabel.swift; sourceTree = "<group>"; };
 		93FAE80129ADD9680056225F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		93FAE80329ADE4DA0056225F /* Prompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompt.swift; sourceTree = "<group>"; };
 		93FAE80529ADE7A60056225F /* PromptManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptManager.swift; sourceTree = "<group>"; };
-		93FAE80729AE15F70056225F /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		93FAE80929AE169B0056225F /* CompletionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionData.swift; sourceTree = "<group>"; };
 		93FAE80E29AE1B980056225F /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,7 +121,7 @@
 				93B615F129AA4D4E00CD4E72 /* LaunchScreen.storyboard */,
 				93B615F429AA4D4E00CD4E72 /* Info.plist */,
 				93157F3929AB1B7D008F71F1 /* Constants.swift */,
-				93FAE80729AE15F70056225F /* APIKeys.swift */,
+				93281F3F29AEE7A500F2B5B1 /* APIKeys.swift */,
 			);
 			path = CorrecToefl;
 			sourceTree = "<group>";
@@ -127,6 +133,7 @@
 				93B6160129AA5EDC00CD4E72 /* StyledNavigationController.swift */,
 				93157F3B29AB2EA0008F71F1 /* EditorViewController.swift */,
 				93FAE80129ADD9680056225F /* ResultViewController.swift */,
+				93281F4529AF434200F2B5B1 /* CameraViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -142,8 +149,10 @@
 				93D7D20C29ABB53800D3813E /* PlaceholderLabel.swift */,
 				93D7D20E29ACE0D200D3813E /* ResultView.swift */,
 				93D7D21729ADA90300D3813E /* HeaderLabel.swift */,
-				93D7D21929ADA93100D3813E /* FeedbackListItemView.swift */,
+				93D7D21929ADA93100D3813E /* FeedbackTableViewCell.swift */,
 				93D7D21B29ADA98D00D3813E /* DefaultTextLabel.swift */,
+				93281F4129AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift */,
+				93281F4329AF00E200F2B5B1 /* TableViewHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,18 +270,21 @@
 			files = (
 				93B615EB29AA4D4C00CD4E72 /* HomeViewController.swift in Sources */,
 				93B615E729AA4D4C00CD4E72 /* AppDelegate.swift in Sources */,
+				93281F4029AEE7A500F2B5B1 /* APIKeys.swift in Sources */,
 				93FAE80F29AE1B980056225F /* Feedback.swift in Sources */,
 				93FAE80229ADD9680056225F /* ResultViewController.swift in Sources */,
 				93B615E929AA4D4C00CD4E72 /* SceneDelegate.swift in Sources */,
 				93157F4229AB5947008F71F1 /* StackView.swift in Sources */,
+				93281F4429AF00E200F2B5B1 /* TableViewHeaderView.swift in Sources */,
 				93D7D20D29ABB53800D3813E /* PlaceholderLabel.swift in Sources */,
-				93FAE80829AE15F70056225F /* APIKeys.swift in Sources */,
 				93157F3E29AB33DE008F71F1 /* NavigationController+Extensions.swift in Sources */,
 				93157F3C29AB2EA0008F71F1 /* EditorViewController.swift in Sources */,
-				93D7D21A29ADA93100D3813E /* FeedbackListItemView.swift in Sources */,
+				93D7D21A29ADA93100D3813E /* FeedbackTableViewCell.swift in Sources */,
 				93D7D21829ADA90300D3813E /* HeaderLabel.swift in Sources */,
 				93FAE80629ADE7A60056225F /* PromptManager.swift in Sources */,
+				93281F4629AF434200F2B5B1 /* CameraViewController.swift in Sources */,
 				93B6160029AA5C1900CD4E72 /* Color+Extensions.swift in Sources */,
+				93281F4229AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift in Sources */,
 				93157F4029AB54D7008F71F1 /* InputTextView.swift in Sources */,
 				93D7D21C29ADA98D00D3813E /* DefaultTextLabel.swift in Sources */,
 				93FAE80429ADE4DA0056225F /* Prompt.swift in Sources */,

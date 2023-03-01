@@ -24,7 +24,7 @@ class PromptManger {
 			"prompt": "\(Prompt(question: question, answer: answer).rawValue)",
 			"temperature": 0.3,
 			"max_tokens": 100
-//			"max_tokens": 10
+//			"max_tokens": 1
 		]
 		
 		AF.request(completionURL,
@@ -76,16 +76,9 @@ class PromptManger {
 			}
 			
 			
-			
 			let feedback = Feedback(feedbackString: markRemoved)
 			feedbacks.append(feedback)
 		}
-		
-//		print("-----")
-//		print(splitedByLinebreak)
-		
-		
-			
 		
 		return feedbacks
 	}

@@ -20,7 +20,7 @@ enum InputViewGravity {
 }
 
 enum Size: Float {
-	case seperatorSize = 0.34
+	case separatorSize = 0.34
 }
 
 enum FeedbackType {
@@ -30,5 +30,5 @@ enum FeedbackType {
 
 
 enum SkeletonNumbers: Int {
-	case feedback = 5
+	case feedback = 3
 }

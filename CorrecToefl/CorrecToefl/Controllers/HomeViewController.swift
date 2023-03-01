@@ -59,8 +59,8 @@ extension HomeViewController {
 		
 		answerInputViewButton.snp.makeConstraints { make in
 			make.width.equalToSuperview()
-			make.top.equalTo(questionInputViewButton.snp.bottom).offset(Size.seperatorSize.rawValue)
-			make.bottom.equalTo(angularScanButton.snp.top).offset(-Size.seperatorSize.rawValue)
+			make.top.equalTo(questionInputViewButton.snp.bottom).offset(Size.separatorSize.rawValue)
+			make.bottom.equalTo(angularScanButton.snp.top).offset(-Size.separatorSize.rawValue)
 		}
 		
 		angularScanButton.snp.makeConstraints { make in
@@ -73,7 +73,8 @@ extension HomeViewController {
 // MARK: Button Actions
 extension HomeViewController {
 	func scanToFillButtonPressed() {
-		print("hit")
+		let cameraVC = CameraViewController()
+		navigationController?.pushWithFadeIn(cameraVC)
 	}
 	
 	func inputViewPressed() {

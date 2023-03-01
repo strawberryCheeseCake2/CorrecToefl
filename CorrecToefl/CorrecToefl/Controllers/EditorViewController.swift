@@ -25,7 +25,7 @@ class EditorViewController: UIViewController {
 	let scrollView = UIScrollView()
 	let topLevelStackView = StackView(axis: .vertical, spacing: 16)
 	
-	let seperatorBackgroundView: StackView = {
+	let separatorBackgroundView: StackView = {
 		let stackView = StackView(axis: .vertical, spacing: 0.34)
 		stackView.backgroundColor = .separator
 		return stackView
@@ -90,9 +90,9 @@ extension EditorViewController {
 	private func addSubviews() {
 		view.addSubview(scrollView)
 		scrollView.addSubview(topLevelStackView)
-		topLevelStackView.addArrangedSubview(seperatorBackgroundView)
-		seperatorBackgroundView.addArrangedSubview(questionTextView)
-		seperatorBackgroundView.addArrangedSubview(answerTextView)
+		topLevelStackView.addArrangedSubview(separatorBackgroundView)
+		separatorBackgroundView.addArrangedSubview(questionTextView)
+		separatorBackgroundView.addArrangedSubview(answerTextView)
 		topLevelStackView.addArrangedSubview(resultView)
 	}
 	
@@ -116,7 +116,7 @@ extension EditorViewController {
 			make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom)
 		}
 		
-		seperatorBackgroundView.snp.makeConstraints { make in
+		separatorBackgroundView.snp.makeConstraints { make in
 			make.width.equalToSuperview()
 		}
 		
@@ -148,9 +148,6 @@ extension EditorViewController {
 	
 	@objc
 	private func submitButtonPressed() {
-		print("hit")
-//		resultView.isHidden = false
-		// 첨삭 중...
 		let resultVC = ResultViewController(question: questionTextView.text, answer: answerTextView.text)
 		navigationController?.pushWithFadeIn(resultVC)
 	}
