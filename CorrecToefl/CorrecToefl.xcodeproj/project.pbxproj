@@ -22,6 +22,7 @@
 		93281F4429AF00E200F2B5B1 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F4329AF00E200F2B5B1 /* TableViewHeaderView.swift */; };
 		93281F4629AF434200F2B5B1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F4529AF434200F2B5B1 /* CameraViewController.swift */; };
 		93281F4829AF46A800F2B5B1 /* CarmeraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93281F4729AF46A800F2B5B1 /* CarmeraButton.swift */; };
+		93281F4D29AF61DB00F2B5B1 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 93281F4C29AF61DB00F2B5B1 /* CropViewController */; };
 		93B615E729AA4D4C00CD4E72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B615E629AA4D4C00CD4E72 /* AppDelegate.swift */; };
 		93B615E929AA4D4C00CD4E72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B615E829AA4D4C00CD4E72 /* SceneDelegate.swift */; };
 		93B615EB29AA4D4C00CD4E72 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B615EA29AA4D4C00CD4E72 /* HomeViewController.swift */; };
@@ -31,7 +32,6 @@
 		93B6160229AA5EDC00CD4E72 /* StyledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6160129AA5EDC00CD4E72 /* StyledNavigationController.swift */; };
 		93B6160429AA647700CD4E72 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6160329AA647700CD4E72 /* View+Extensions.swift */; };
 		93D7D20D29ABB53800D3813E /* PlaceholderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D20C29ABB53800D3813E /* PlaceholderLabel.swift */; };
-		93D7D20F29ACE0D200D3813E /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D20E29ACE0D200D3813E /* ResultView.swift */; };
 		93D7D21829ADA90300D3813E /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D21729ADA90300D3813E /* HeaderLabel.swift */; };
 		93D7D21A29ADA93100D3813E /* FeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D21929ADA93100D3813E /* FeedbackTableViewCell.swift */; };
 		93D7D21C29ADA98D00D3813E /* DefaultTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D21B29ADA98D00D3813E /* DefaultTextLabel.swift */; };
@@ -70,7 +70,6 @@
 		93B6160129AA5EDC00CD4E72 /* StyledNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledNavigationController.swift; sourceTree = "<group>"; };
 		93B6160329AA647700CD4E72 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		93D7D20C29ABB53800D3813E /* PlaceholderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderLabel.swift; sourceTree = "<group>"; };
-		93D7D20E29ACE0D200D3813E /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		93D7D21729ADA90300D3813E /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		93D7D21929ADA93100D3813E /* FeedbackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewCell.swift; sourceTree = "<group>"; };
 		93D7D21B29ADA98D00D3813E /* DefaultTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextLabel.swift; sourceTree = "<group>"; };
@@ -87,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93157F3529AAF5E0008F71F1 /* SnapKit in Frameworks */,
+				93281F4D29AF61DB00F2B5B1 /* CropViewController in Frameworks */,
 				93FAE81229AE45710056225F /* SkeletonView in Frameworks */,
 				93FAE80D29AE16C00056225F /* Alamofire in Frameworks */,
 			);
@@ -149,7 +149,6 @@
 				93157F4129AB5947008F71F1 /* StackView.swift */,
 				93157F4329AB6DBE008F71F1 /* RoundedButton.swift */,
 				93D7D20C29ABB53800D3813E /* PlaceholderLabel.swift */,
-				93D7D20E29ACE0D200D3813E /* ResultView.swift */,
 				93D7D21729ADA90300D3813E /* HeaderLabel.swift */,
 				93D7D21929ADA93100D3813E /* FeedbackTableViewCell.swift */,
 				93D7D21B29ADA98D00D3813E /* DefaultTextLabel.swift */,
@@ -211,6 +210,7 @@
 				93157F3429AAF5E0008F71F1 /* SnapKit */,
 				93FAE80C29AE16C00056225F /* Alamofire */,
 				93FAE81129AE45710056225F /* SkeletonView */,
+				93281F4C29AF61DB00F2B5B1 /* CropViewController */,
 			);
 			productName = CorrecToefl;
 			productReference = 93B615E329AA4D4C00CD4E72 /* CorrecToefl.app */;
@@ -244,6 +244,7 @@
 				93157F3329AAF5E0008F71F1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				93FAE80B29AE16C00056225F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				93FAE81029AE45710056225F /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				93281F4B29AF61DB00F2B5B1 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			productRefGroup = 93B615E429AA4D4C00CD4E72 /* Products */;
 			projectDirPath = "";
@@ -296,7 +297,6 @@
 				93B6160429AA647700CD4E72 /* View+Extensions.swift in Sources */,
 				93157F4629AB7A49008F71F1 /* TextView+Extensions.swift in Sources */,
 				93B6160229AA5EDC00CD4E72 /* StyledNavigationController.swift in Sources */,
-				93D7D20F29ACE0D200D3813E /* ResultView.swift in Sources */,
 				93157F4429AB6DBE008F71F1 /* RoundedButton.swift in Sources */,
 				93FAE80A29AE169B0056225F /* CompletionData.swift in Sources */,
 				93157F3229AAF57D008F71F1 /* InputViewButton.swift in Sources */,
@@ -518,6 +518,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		93281F4B29AF61DB00F2B5B1 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		93FAE80B29AE16C00056225F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -541,6 +549,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 93157F3329AAF5E0008F71F1 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		93281F4C29AF61DB00F2B5B1 /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93281F4B29AF61DB00F2B5B1 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
 		};
 		93FAE80C29AE16C00056225F /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

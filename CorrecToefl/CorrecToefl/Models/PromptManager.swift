@@ -10,26 +10,44 @@ import Alamofire
 
 class PromptManger {
 	
+	private let completionURL = "https://api.openai.com/v1/completions"
+	
 	func getFeedback(question: String, answer: String, completionHandler: @escaping (String) -> Void) {
-		let completionURL = "https://api.openai.com/v1/completions"
-		
-		let headers: HTTPHeaders = [
-			"Content-Type": "application/json",
-			"Authorization": "Bearer \(APIKeys.openAI)"
-		]
 		
 		let parameters: [String: Any] = [
 //			"model": "ada",
 			"model": "text-davinci-003",
 			"prompt": "\(Prompt(question: question, answer: answer).rawValue)",
 			"temperature": 0.3,
-			"max_tokens": 100
+			"max_tokens": 500
 //			"max_tokens": 1
+		]
+		
+		
+		performRequest(params: parameters, completionHandler: completionHandler)
+		
+	} // func getFeedback()
+	
+	func getLastSentenceOfQuestion(ocrResult: String, completionHandler: @escaping (String) -> Void) {
+		let parameters: [String: Any] = [
+			"model": "text-davinci-003",
+			"prompt": "Here's a pair of question and answer for toefl speaking question. Tell me the last sentence of the question.\(ocrResult). The last sentence of the question is:",
+			"temperature": 0.3,
+			"max_tokens": 10
+		]
+		
+		performRequest(params: parameters, completionHandler: completionHandler)
+	} // func getLastSentenceOfQuestion
+	
+	private func performRequest(params: [String: Any], completionHandler: @escaping (String) -> Void) {
+		let headers: HTTPHeaders = [
+			"Content-Type": "application/json",
+			"Authorization": "Bearer \(APIKeys.openAI)"
 		]
 		
 		AF.request(completionURL,
 				   method: .post,
-				   parameters: parameters,
+				   parameters: params,
 				   encoding: JSONEncoding.default,
 				   headers: headers
 		).responseDecodable(of: CompletionData.self) { response in
@@ -45,9 +63,7 @@ class PromptManger {
 				
 			} // switch
 		}
-		
-		
-	} // func getFeedback()
+	}
 	
 		
 	func parsePrompt(_ prompt: String) -> [Feedback] {

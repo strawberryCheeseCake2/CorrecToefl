@@ -42,7 +42,7 @@ class ResultViewController: UIViewController {
 		addSubviews()
 		setupLayout()
 		
-//		loadFeedback()
+		loadFeedback()
 	}
 	
 	// MARK: Updating Data

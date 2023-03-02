@@ -33,8 +33,8 @@ class EditorViewController: UIViewController {
 	
 	let questionTextView = InputTextView(gravity: .leadingCenter, placeholder: "문제를 입력하세요")
 	let answerTextView = InputTextView(gravity: .leadingTop, placeholder: "첨삭받을 답안을 입력하세요")
-	let resultView = ResultView()
 	
+	var ocrResultPrompt: Prompt?
 	
 	// MARK: LifeCycle
 	override func viewDidLoad() {
@@ -51,7 +51,6 @@ class EditorViewController: UIViewController {
 		setNavigationBarShadowColor(.clear)
 		questionTextView.becomeFirstResponder()
 		addKeyboardNotifications()
-		resultView.isHidden = true
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -93,7 +92,6 @@ extension EditorViewController {
 		topLevelStackView.addArrangedSubview(separatorBackgroundView)
 		separatorBackgroundView.addArrangedSubview(questionTextView)
 		separatorBackgroundView.addArrangedSubview(answerTextView)
-		topLevelStackView.addArrangedSubview(resultView)
 	}
 	
 	private func setupLayout() {
@@ -130,10 +128,6 @@ extension EditorViewController {
 			make.height.greaterThanOrEqualTo(view.safeAreaLayoutGuide).offset(-64)
 		}
 		
-		resultView.snp.makeConstraints { make in
-			make.left.equalToSuperview().offset(16)
-			make.right.equalToSuperview().offset(-16)
-		}
 	}
 	
 	
@@ -143,7 +137,7 @@ extension EditorViewController {
 extension EditorViewController {
 	@objc
 	private func backButtonPressd() {
-		navigationController?.popWithFadeOut()
+		navigationController?.popToRootVCWithFadeOut()
 	}
 	
 	@objc

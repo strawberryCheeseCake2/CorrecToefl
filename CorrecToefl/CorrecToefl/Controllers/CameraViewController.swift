@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import AVFoundation
 import SnapKit
+import CropViewController
+import Vision
 
 class CameraViewController: UIViewController {
 	
@@ -21,6 +23,10 @@ class CameraViewController: UIViewController {
 	let output = AVCapturePhotoOutput()
 	
 	let previewLayer = AVCaptureVideoPreviewLayer()
+	
+	let activityIndicator = UIActivityIndicatorView(style: .large)
+	
+	let promptManger = PromptManger()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -55,12 +61,13 @@ extension CameraViewController {
 	
 	private func addSubviews() {
 		view.addSubview(captureButton)
+		view.addSubview(activityIndicator)
 	}
 	
 	private func setupLayout() {
 		previewLayer.frame = view.bounds
-		captureButton.center = CGPoint(x: view.frame.size.width / 2, y:
-										view.frame.size.height - 100)
+		captureButton.center = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height - 100)
+		activityIndicator.center = CGPoint(x: view.frame.size.width / 2, y:view.frame.size.height / 2)
 	}
 	
 }
@@ -82,12 +89,10 @@ extension CameraViewController {
 
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
 	func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-		guard let data = photo.fileDataRepresentation() else { return }
+		guard let data = photo.fileDataRepresentation(),
+		let image = UIImage(data: data) else { return }
 		
-		let image = UIImage(data: data)
-		
-		
-		
+		showCropVC(image)
 		session?.stopRunning()
 		
 //		let imageView = UIImageView(image: image)
@@ -149,4 +154,91 @@ extension CameraViewController {
 		} // if let device
 		
 	}
+}
+
+// MARK: Crop
+extension CameraViewController: CropViewControllerDelegate {
+	private func showCropVC(_ image: UIImage) {
+		print(image)
+		
+		let cropVC = CropViewController(croppingStyle: .default, image: image)
+		cropVC.aspectRatioPreset = .presetSquare
+		cropVC.delegate = self
+		
+		navigationController?.pushWithFadeIn(cropVC)
+	}
+	
+	func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool) {
+		navigationController?.popWithFadeOut()
+		session?.startRunning()
+	}
+	
+	func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+		navigationController?.popWithFadeOut()
+		captureButton.isUserInteractionEnabled = false
+		activityIndicator.startAnimating()
+		
+		recognizeText(image: image) { [weak self] ocrResult in
+			self?.activityIndicator.stopAnimating()
+			self?.captureButton.isUserInteractionEnabled = true
+			
+//			self?.promptManger.getLastSentenceOfQuestion(ocrResult: ocrResult) { result in
+				// ocr parse -> prompt
+				
+//				let editorVC = EditorViewController()
+//				editorVC.questionTextView.text = question
+//				editorVC.answerTextView.text = answer
+//				self?.navigationController?.pushWithFadeIn(editorVC)
+//			}
+			
+			let editorVC = EditorViewController()
+			editorVC.answerTextView.text = ocrResult
+			editorVC.answerTextView.placholderLabel.text = ""
+			self?.navigationController?.setNavigationBarHidden(false, animated: true)
+			self?.navigationController?.pushWithFadeIn(editorVC)
+			
+		}
+		
+	}
+}
+
+
+// MARK: Vision
+extension CameraViewController {
+	private func recognizeText(image: UIImage, completionHandler: @escaping ((String) -> Void)) {
+		guard let cgImage = image.cgImage else { return }
+		
+		print(cgImage)
+		let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+		
+		let request = VNRecognizeTextRequest { request , error in
+			
+			guard let observations = request.results as? [VNRecognizedTextObservation], error == nil
+			else {
+				print("!!!!!!!!!!!!!")
+				print(error!)
+				return }
+			
+			let text = observations.compactMap { observation in
+				observation.topCandidates(1).first?.string
+			}.joined(separator: " ")
+			
+			completionHandler(text)
+		}
+		
+		request.usesLanguageCorrection = true
+		request.automaticallyDetectsLanguage = true
+		request.recognitionLevel = .accurate
+		request.recognitionLanguages = ["English"]
+		
+		do {
+			try handler.perform([request])
+		} catch {
+			print(error)
+		}
+		
+		
+	}
+	
+	
 }
