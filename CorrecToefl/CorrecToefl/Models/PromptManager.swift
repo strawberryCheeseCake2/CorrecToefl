@@ -17,7 +17,7 @@ class PromptManger {
 		let parameters: [String: Any] = [
 //			"model": "ada",
 			"model": "text-davinci-003",
-			"prompt": "\(Prompt(question: question, answer: answer).rawValue)",
+			"prompt": "\(FeedbackPrompt(question: question, answer: answer).feedbackPrompt)",
 			"temperature": 0.3,
 			"max_tokens": 500
 //			"max_tokens": 1
@@ -28,7 +28,7 @@ class PromptManger {
 		
 	} // func getFeedback()
 	
-	func getLastSentenceOfQuestion(ocrResult: String, completionHandler: @escaping (String) -> Void) {
+	func getEndOfQuestion(ocrResult: String, completionHandler: @escaping (String) -> Void) {
 		let parameters: [String: Any] = [
 			"model": "text-davinci-003",
 			"prompt": "Here's a pair of question and answer for toefl speaking question. Tell me the last sentence of the question.\(ocrResult). The last sentence of the question is:",
@@ -66,7 +66,14 @@ class PromptManger {
 	}
 	
 		
-	func parsePrompt(_ prompt: String) -> [Feedback] {
+	
+	
+}
+
+// MARK: Processing Results
+extension PromptManger {
+	
+	func parseFeedbackResult(_ prompt: String) -> [Feedback] {
 		let trimedPrompt = prompt.trimmingCharacters(in: .whitespacesAndNewlines)
 		
 		var feedbacks = [Feedback]()
@@ -79,15 +86,15 @@ class PromptManger {
 		
 		for component in splitedByLinebreak {
 			
-			var type: FeedbackType = .check
+//			var type: FeedbackType = .check
 			
 			var markRemoved: String = component
 			
 			if component.hasPrefix("**") {
-				type = .check
+//				type = .check
 				markRemoved = component.replacingOccurrences(of: "**", with: "")
 			} else if component.hasPrefix("##") {
-				type = .cross
+//				type = .cross
 				markRemoved = component.replacingOccurrences(of: "##", with: "")
 			}
 			
@@ -99,11 +106,27 @@ class PromptManger {
 		return feedbacks
 	}
 	
+	func getSeperatedPrompt(text: String) -> FeedbackPrompt {
+		
+		// Seperate text by sentence
+		var sentences: [String] = []
+		text.enumerateSubstrings(in: text.startIndex..., options: [.localized, .bySentences]) { (tag, _, _, _) in
+			sentences.append(tag ?? "")
+		}
+		
+		// Get first two and process it as question
+		let question = sentences[0] + sentences[1]
+		var answer: String = ""
+		
+		for chunk in sentences[2...] {
+			answer += chunk
+		}
+		
+		let prompt = FeedbackPrompt(question: question, answer: answer)
+		
+		return prompt
+	}
 	
-}
 
-//		var sentences: [String] = []
-//		trimedPrompt.enumerateSubstrings(in: trimedPrompt.startIndex..., options: [.localized, .bySentences]) { (tag, _, _, _) in
-//			sentences.append(tag ?? "")
-//		}
+}
 

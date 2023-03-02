@@ -54,7 +54,7 @@ class ResultViewController: UIViewController {
 			guard self != nil,
 				  let safePromptManger = self?.promptManger else { return }
 			
-			self?.feedbacks = safePromptManger.parsePrompt(result)
+			self?.feedbacks = safePromptManger.parseFeedbackResult(result)
 			print(self!.feedbacks)
 			
 			self?.updateFeedbackView()

@@ -182,18 +182,21 @@ extension CameraViewController: CropViewControllerDelegate {
 			self?.activityIndicator.stopAnimating()
 			self?.captureButton.isUserInteractionEnabled = true
 			
-//			self?.promptManger.getLastSentenceOfQuestion(ocrResult: ocrResult) { result in
-				// ocr parse -> prompt
-				
+//			self?.promptManger.getEndOfQuestion(ocrResult: ocrResult) { result in
+////				 ocr parse -> prompt
+//
 //				let editorVC = EditorViewController()
-//				editorVC.questionTextView.text = question
-//				editorVC.answerTextView.text = answer
+//				editorVC.questionTextView.placholderLabel.isHidden = true
+//				editorVC.answerTextView.placholderLabel.isHidden = true
+////				editorVC.questionTextView.text = question
+////				editorVC.answerTextView.text = answer
 //				self?.navigationController?.pushWithFadeIn(editorVC)
 //			}
 			
 			let editorVC = EditorViewController()
-			editorVC.answerTextView.text = ocrResult
-			editorVC.answerTextView.placholderLabel.text = ""
+			let prompt = self?.promptManger.getSeperatedPrompt(text: ocrResult)
+			editorVC.answerTextView.text = ""
+			editorVC.answerTextView.placholderLabel.isHidden = true
 			self?.navigationController?.setNavigationBarHidden(false, animated: true)
 			self?.navigationController?.pushWithFadeIn(editorVC)
 			
@@ -215,7 +218,6 @@ extension CameraViewController {
 			
 			guard let observations = request.results as? [VNRecognizedTextObservation], error == nil
 			else {
-				print("!!!!!!!!!!!!!")
 				print(error!)
 				return }
 			
