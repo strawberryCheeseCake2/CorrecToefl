@@ -15,3 +15,4 @@ GPT 기반 토플 라이팅/스피킹 첨삭앱
 - MVC 패턴
 
 # 스크린샷 
+<img src="https://github.com/strawberryCheeseCake2/CorrecToefl/blob/main/GIF.gif" alt="gif" title="gif" width="250"/>
