@@ -31,5 +31,5 @@ enum FeedbackType {
 
 
 enum SkeletonNumbers: Int {
-	case feedback = 3
+	case feedback = 5
 }

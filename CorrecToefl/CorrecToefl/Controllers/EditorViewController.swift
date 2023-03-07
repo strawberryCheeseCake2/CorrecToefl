@@ -34,7 +34,6 @@ class EditorViewController: UIViewController {
 	let questionTextView = InputTextView(gravity: .leadingCenter, placeholder: "문제를 입력하세요")
 	let answerTextView = InputTextView(gravity: .leadingTop, placeholder: "첨삭받을 답안을 입력하세요")
 	
-	var ocrResultPrompt: Prompt?
 	
 	// MARK: LifeCycle
 	override func viewDidLoad() {
@@ -42,9 +41,17 @@ class EditorViewController: UIViewController {
 		configureVC()
 		addSubviews()
 		configureTextView()
-		setupLayout()
-		
 		hideKeyboardOnTapAround()
+		setupLayout()
+
+		if questionTextView.text != "" || answerTextView.text != "" {
+			questionTextView.placholderLabel.isHidden = true
+			answerTextView.placholderLabel.isHidden = true
+			view.layoutIfNeeded() // sizeThatFits
+			adjustTextViewHeight()
+			setSubmitButtonAvailability(to: true)
+		}
+		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -63,9 +70,6 @@ class EditorViewController: UIViewController {
 		answerTextView.delegate = self
 		
 	}
-	
-	
-	
 	
 }
 
@@ -149,6 +153,8 @@ extension EditorViewController {
 
 // MARK: TextViewDelegate
 extension EditorViewController: UITextViewDelegate {
+
+	
 	private func updateLayout(with height: Double) {
 		questionTextView.snp.remakeConstraints { make in
 			make.top.equalToSuperview()
@@ -165,7 +171,7 @@ extension EditorViewController: UITextViewDelegate {
 	private func adjustTextViewHeight() {
 		let fixedWidth = questionTextView.frame.size.width
 		let newSize = questionTextView.sizeThatFits(CGSize(width: fixedWidth, height: .greatestFiniteMagnitude))
-		
+		print(newSize.height)
 		updateLayout(with: newSize.height)
 		UIView.animate(withDuration: 0.3, animations: {
 			self.view.layoutIfNeeded()

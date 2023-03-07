@@ -54,7 +54,7 @@ class ResultViewController: UIViewController {
 			guard self != nil,
 				  let safePromptManger = self?.promptManger else { return }
 			
-			self?.feedbacks = safePromptManger.parsePrompt(result)
+			self?.feedbacks = safePromptManger.parseFeedbackResult(result)
 			print(self!.feedbacks)
 			
 			self?.updateFeedbackView()
@@ -66,14 +66,17 @@ class ResultViewController: UIViewController {
 		
 		DispatchQueue.main.async {
 			self.feedbackTableView.reloadData()
+			self.scrollToBottom()
 		}
 		
-		self.scrollToBottom()
+		
 		
 	}
 	
 	private func scrollToBottom() {
 		let feedbackCount = feedbacks.count
+		print("11!!!!!!!!!!!!!!!")
+		print(feedbacks)
 		if feedbackCount > 0 {
 			let indexPath = IndexPath(row: feedbackCount - 1, section: 1)
 			feedbackTableView.scrollToRow(at: indexPath, at: .top, animated: true)

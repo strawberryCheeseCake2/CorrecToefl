@@ -182,18 +182,13 @@ extension CameraViewController: CropViewControllerDelegate {
 			self?.activityIndicator.stopAnimating()
 			self?.captureButton.isUserInteractionEnabled = true
 			
-//			self?.promptManger.getLastSentenceOfQuestion(ocrResult: ocrResult) { result in
-				// ocr parse -> prompt
-				
-//				let editorVC = EditorViewController()
-//				editorVC.questionTextView.text = question
-//				editorVC.answerTextView.text = answer
-//				self?.navigationController?.pushWithFadeIn(editorVC)
-//			}
+			guard let manager = self?.promptManger else { return }
 			
 			let editorVC = EditorViewController()
-			editorVC.answerTextView.text = ocrResult
-			editorVC.answerTextView.placholderLabel.text = ""
+			let feedbackInput = manager.getSeperatedPrompt(text: ocrResult)
+			editorVC.questionTextView.text = feedbackInput.question
+			editorVC.answerTextView.text = feedbackInput.answer
+			
 			self?.navigationController?.setNavigationBarHidden(false, animated: true)
 			self?.navigationController?.pushWithFadeIn(editorVC)
 			

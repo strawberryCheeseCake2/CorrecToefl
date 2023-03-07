@@ -36,7 +36,7 @@
 		93D7D21A29ADA93100D3813E /* FeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D21929ADA93100D3813E /* FeedbackTableViewCell.swift */; };
 		93D7D21C29ADA98D00D3813E /* DefaultTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D7D21B29ADA98D00D3813E /* DefaultTextLabel.swift */; };
 		93FAE80229ADD9680056225F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80129ADD9680056225F /* ResultViewController.swift */; };
-		93FAE80429ADE4DA0056225F /* Prompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80329ADE4DA0056225F /* Prompt.swift */; };
+		93FAE80429ADE4DA0056225F /* FeedbackPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80329ADE4DA0056225F /* FeedbackPrompt.swift */; };
 		93FAE80629ADE7A60056225F /* PromptManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80529ADE7A60056225F /* PromptManager.swift */; };
 		93FAE80A29AE169B0056225F /* CompletionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FAE80929AE169B0056225F /* CompletionData.swift */; };
 		93FAE80D29AE16C00056225F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 93FAE80C29AE16C00056225F /* Alamofire */; };
@@ -45,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9309F2CC29B7188B002CD08B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93157F3129AAF57D008F71F1 /* InputViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewButton.swift; sourceTree = "<group>"; };
 		93157F3629AB111F008F71F1 /* AngularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngularButton.swift; sourceTree = "<group>"; };
 		93157F3929AB1B7D008F71F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -74,7 +75,7 @@
 		93D7D21929ADA93100D3813E /* FeedbackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewCell.swift; sourceTree = "<group>"; };
 		93D7D21B29ADA98D00D3813E /* DefaultTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextLabel.swift; sourceTree = "<group>"; };
 		93FAE80129ADD9680056225F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		93FAE80329ADE4DA0056225F /* Prompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompt.swift; sourceTree = "<group>"; };
+		93FAE80329ADE4DA0056225F /* FeedbackPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPrompt.swift; sourceTree = "<group>"; };
 		93FAE80529ADE7A60056225F /* PromptManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptManager.swift; sourceTree = "<group>"; };
 		93FAE80929AE169B0056225F /* CompletionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionData.swift; sourceTree = "<group>"; };
 		93FAE80E29AE1B980056225F /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		93B615DA29AA4D4C00CD4E72 = {
 			isa = PBXGroup;
 			children = (
+				9309F2CC29B7188B002CD08B /* README.md */,
 				93B615E529AA4D4C00CD4E72 /* CorrecToefl */,
 				93B615E429AA4D4C00CD4E72 /* Products */,
 			);
@@ -162,7 +164,7 @@
 		93B615FC29AA581600CD4E72 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				93FAE80329ADE4DA0056225F /* Prompt.swift */,
+				93FAE80329ADE4DA0056225F /* FeedbackPrompt.swift */,
 				93FAE80529ADE7A60056225F /* PromptManager.swift */,
 				93FAE80929AE169B0056225F /* CompletionData.swift */,
 				93FAE80E29AE1B980056225F /* Feedback.swift */,
@@ -292,7 +294,7 @@
 				93281F4229AEEDC200F2B5B1 /* FeedbackInputTableViewHeaderView.swift in Sources */,
 				93157F4029AB54D7008F71F1 /* InputTextView.swift in Sources */,
 				93D7D21C29ADA98D00D3813E /* DefaultTextLabel.swift in Sources */,
-				93FAE80429ADE4DA0056225F /* Prompt.swift in Sources */,
+				93FAE80429ADE4DA0056225F /* FeedbackPrompt.swift in Sources */,
 				93157F3729AB111F008F71F1 /* AngularButton.swift in Sources */,
 				93B6160429AA647700CD4E72 /* View+Extensions.swift in Sources */,
 				93157F4629AB7A49008F71F1 /* TextView+Extensions.swift in Sources */,
